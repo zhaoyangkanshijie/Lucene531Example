@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  
+
+  <servlet>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>com.servlet.SearchServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ManagerServlet</servlet-name>
+    <servlet-class>com.servlet.ManagerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>InitialServlet</servlet-name>
+    <servlet-class>com.servlet.InitialServlet</servlet-class>
+  </servlet>
+
+
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/servlet/SearchServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ManagerServlet</servlet-name>
+    <url-pattern>/servlet/ManagerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InitialServlet</servlet-name>
+    <url-pattern>/servlet/InitialServlet</url-pattern>
+  </servlet-mapping>
+
+</web-app>

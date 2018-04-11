@@ -1,0 +1,35 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>全文搜索</title>
+	<script src="jquery-1.12.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+		<button id="searchSubmit">提交</button>
+		
+	<div id="test">
+		<p>success</p>
+	</div>
+	
+<script>
+$(function(){
+	$("#searchSubmit").click(function(){
+		$.ajax({
+			url: '/Lucene531/servlet/InitialServlet',
+            type: 'get',
+            beforeSend:function(){
+            	$('#test').html("");
+            },
+			success:function(data){
+				$("#test").append("<p>" + data.errCode + "</p>");
+			},
+			error:function(e){
+				$("#test").append("<p>" + data.errCode + "</p>");
+			}
+		});
+	});
+}); 
+</script>
+	
+</body>
+</html>
