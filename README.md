@@ -106,7 +106,7 @@ lucene需要通过分词器(analyzer)拆分句子、词组，以便存储和搜�
     <tr>
         <td>Test</td>
         <td>id(int)</td>
-        <td>title(varchar)</td>
+        <td>name(varchar)</td>
         <td>model(varchar)</td>
         <td>detail(text/varchar)</td>
         <td>classid(int)</td>
