@@ -53,6 +53,14 @@ lucene需要通过分词器(analyzer)拆分句子、词组，以便存储和搜�
 
 * 设置搜索结果的权重(setBoost)来控制排序
 
+* 设置sort函数控制排序
+    * [lucene排序---相关度与其他组合排序](https://blog.csdn.net/JackieLiuLixi/article/details/40149101)
+    * [lucene sort field 排序字段](http://www.fengxiaochuang.com/?p=160)
+    * [lucene按时间排序显示](https://www.cnblogs.com/lingyi/articles/6249664.html)
+    * [lucene/IK查询怎么在得分一样的情况下按照另一个字段排序](https://ask.csdn.net/questions/679733)
+    * [Lucene sort 排序](https://blog.csdn.net/jackieliulixi/article/details/40149313)
+    * 简单总结：先在创建单条索引时，向文档加入可比较域，如NumericDocValuesField,搜索时定义sort，并用sortfield初始化，然后search（query，limit，sort，[hasScoreCalculate=]true，[hasMaxScore=]true）确保排序的同时计算分数。
+
 * 关键词替换为包含html class的关键词，以便高亮
 
 ### (4) 索引表的增删改

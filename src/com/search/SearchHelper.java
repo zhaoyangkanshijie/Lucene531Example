@@ -14,6 +14,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldType;
+import org.apache.lucene.document.NumericDocValuesField;
 import org.apache.lucene.document.StoredField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
@@ -31,6 +32,8 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.MatchAllDocsQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.Sort;
+import org.apache.lucene.search.SortField;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.WildcardQuery;
@@ -176,6 +179,7 @@ public class SearchHelper{
     	doc.add(tField7);
     	doc.add(tField8);
     	doc.add(tField9);
+    	doc.add(new NumericDocValuesField("time", data.getUpdatetime().getTime()));
     	
     	//System.out.println("createSingleIndex");
     	//System.out.println(data.isVisible());
@@ -320,7 +324,14 @@ public class SearchHelper{
 			int dataMax = Integer.parseInt(sdataMax);
 			IndexSearcher isearcher = new IndexSearcher(ireader);//实例化搜索器
 //			isearcher.setSimilarity(new IKSimilarity());
-			TopDocs docs = isearcher.search(searchQuery,dataMax);
+			//相同得分按时间倒序排
+			Sort sort = new Sort(
+				new SortField[]{
+						SortField.FIELD_SCORE,
+					new SortField("time", SortField.Type.LONG, true)
+				}
+			);
+			TopDocs docs = isearcher.search(searchQuery,dataMax,sort,true,true);
 			//高亮	
 			String[] preTags = new String[] { "<span class='high-light'>"};
 			String[] postTags = new String[] { "</span>"};
